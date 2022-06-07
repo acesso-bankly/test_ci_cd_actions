@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: echo "run test"
       - run: echo "rund build"
-      - run: echo "final status ${{ job.status }}."
+      - run: echo "final status ${{ job.status }}"
 
   deploy:
     name: 'deploy production'
