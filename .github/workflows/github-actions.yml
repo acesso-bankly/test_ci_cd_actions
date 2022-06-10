@@ -5,7 +5,7 @@ on:
   #     - "develop"
   #     - "main"
   #     - "release/*"
-  # pull_request:
+  pull_request:
   repository_dispatch:
     types: [approved]
     
