@@ -34,6 +34,8 @@ jobs:
   deploy_prod:
     name: 'deploy to production'
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - run: echo 'deploy container to prod'
       - run: echo ${{ github.event_name }}
+      - run: echo ${{ github.event.event_type }}
