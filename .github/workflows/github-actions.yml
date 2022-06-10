@@ -7,6 +7,7 @@ on:
   #     - "release/*"
   # pull_request:
   repository_dispatch:
+    types: [approved]
     
 jobs:
   build:
