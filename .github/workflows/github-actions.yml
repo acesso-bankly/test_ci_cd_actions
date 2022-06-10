@@ -17,6 +17,7 @@ jobs:
       - run: npm install
       - run: npm install -g @angular/cli
       - run: npm run build
+      - run: npm run test
 
   deploy_stg:
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
