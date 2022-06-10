@@ -14,9 +14,9 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: "16.x"
+      - run: npm install
       - name: Angular Build and Test
         run: |
-          npm install
           npm install @angular/cli
           npm run build
           npm run test
