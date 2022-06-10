@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Angular Build and Test
-        uses: colbyhill21/angular-full-ci/@v1.0
-        with:
-          testcommand: npm test
-          mocha: false
+        run: |
+          npm install @angular/cli
+          npm run build
+          npm run test
 
       - run: echo "final status ${{ job.status }}"
 
