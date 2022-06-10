@@ -17,9 +17,9 @@ jobs:
       - name: Build and test
         run: |
           npm install
-          npm install @angular/cli
-          npm install karma
-          npm install karma-cli
+          npm install -g @angular/cli
+          npm install -g karma
+          npm install -g karma-cli
           karma init
           npm install jasmine-core
           karma start
