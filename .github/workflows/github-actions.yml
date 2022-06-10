@@ -14,17 +14,11 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: "16.x"
-      - name: Build and test
+      - name: Building application
         run: |
           npm install
           npm install -g @angular/cli
-          npm install -g karma
-          npm install -g karma-cli
-          karma init
-          npm install jasmine-core
-          karma start
           npm run build
-          npm run test
 
   deploy_stg:
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
