@@ -23,13 +23,13 @@ jobs:
           npm install -g @angular/cli
           npm run build
 
-  deploy_stg:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-    needs: build
-    name: 'deploy stg'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'deploy container'
+  # deploy_stg:
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+  #   needs: build
+  #   name: 'deploy stg'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: echo 'deploy container'
 
   deploy_prod:
     name: 'deploy to production'
