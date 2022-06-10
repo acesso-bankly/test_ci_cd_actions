@@ -1,19 +1,29 @@
 name: GitHub Actions Demo
-on: [push]
+on: 
+  push:
+    branches:
+      - "develop"
+  pull_request:
+    
+
 jobs:
   build:
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "run test"
-      - run: echo "rund build"
+      - uses: actions/checkout@v3
+      - name: Angular Build and Test
+        uses: colbyhill21/angular-full-ci/@v1.0
+        with:
+          testcommand: run test:ci
+          mocha: true
+
       - run: echo "final status ${{ job.status }}"
 
-  deploy:
-    name: 'deploy production'
-    environment:
-      name: production
-      
-    runs-on: ubuntu-latest
+  deploy_stg:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs: build
+    name: 'deploy stg'
+    runs-on: ubuntu-latest
     steps:
       - run: echo 'deploy container'
