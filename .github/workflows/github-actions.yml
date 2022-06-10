@@ -39,4 +39,4 @@ jobs:
     steps:
       - run: echo 'deploy container to prod'
       - run: echo ${{ github.event_name }}
-      - run: echo ${{ github.event.event_type }}
+      - run: echo ${{ github.event.action }}
