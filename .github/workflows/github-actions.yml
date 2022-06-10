@@ -3,7 +3,11 @@ on:
   push:
     branches:
       - "develop"
+      - "main"
+      - "release/*"
   pull_request:
+  repository_dispatch:
+    types: [deploy_to_prod_was_approved]
     
 jobs:
   build:
@@ -27,3 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'deploy container'
+
+  deploy_prod:
+    if: github.event_name == 'deploy_to_prod_was_approved'
+    needs: [build]
+    name: 'deploy to production'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'deploy container to prod'
