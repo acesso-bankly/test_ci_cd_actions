@@ -5,9 +5,8 @@ on:
   #     - "develop"
   #     - "main"
   #     - "release/*"
-  pull_request:
+  # pull_request:
   repository_dispatch:
-    types: [approved]
     
 jobs:
   build:
@@ -33,7 +32,6 @@ jobs:
       - run: echo 'deploy container'
 
   deploy_prod:
-    needs: [build]
     name: 'deploy to production'
     runs-on: ubuntu-latest
     steps:
