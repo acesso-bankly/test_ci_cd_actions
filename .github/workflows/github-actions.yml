@@ -16,6 +16,7 @@ jobs:
           node-version: "16.x"
       - name: Angular Build and Test
         run: |
+          npm install
           npm install @angular/cli
           npm run build
           npm run test
