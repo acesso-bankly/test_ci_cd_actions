@@ -7,7 +7,7 @@ on:
       - "release/*"
   pull_request:
   repository_dispatch:
-    types: [approved]
+    types: [release_was_analysed]
     
 jobs:
   build:
@@ -34,12 +34,17 @@ jobs:
 
   waiting_approval:
     name: waiting external approval
-    if: github.event_name == 'repository_dispatch' && github.event.action == 'approved'
+    if: github.event_name == 'repository_dispatch' && github.event.action == 'release_was_analysed'
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'release was appoved'
-
+      - name: checking if release wasn't approved 
+        if: github.event.client_payload.wasApproved == false
+        run: |
+          echo release wasn't approved
+          exit 1
+      - name: checking if release was approved
+        run: echo release was approved
 
   deploy_prod:
     name: 'deploy to production'
