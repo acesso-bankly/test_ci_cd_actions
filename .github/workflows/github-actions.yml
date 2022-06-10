@@ -16,12 +16,7 @@ jobs:
           node-version: "16.x"
       - run: npm install
       - run: npm install -g @angular/cli
-      - name: Angular Build and Test
-        run: |
-          npm run build
-          npm run test
-
-      - run: echo "final status ${{ job.status }}"
+      - run: npm run build
 
   deploy_stg:
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
