@@ -7,7 +7,7 @@ on:
   #     - "release/*"
   # pull_request:
   repository_dispatch:
-    types: [deploy_to_prod_was_approved]
+    types: [approved]
     
 jobs:
   build:
@@ -33,9 +33,9 @@ jobs:
       - run: echo 'deploy container'
 
   deploy_prod:
-    if: github.event_name == deploy_to_prod_was_approved
     needs: [build]
     name: 'deploy to production'
     runs-on: ubuntu-latest
     steps:
       - run: echo 'deploy container to prod'
+      - run: echo ${{ github.event_name }}
