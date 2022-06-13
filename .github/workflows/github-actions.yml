@@ -52,8 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: test_ci_cd_actions/main
-          path: main
+         ref: main
           
       - run: echo 'current repository ${{ github.ref }}'
       - uses: trstringer/manual-approval@v1
