@@ -58,5 +58,6 @@ jobs:
         with:
           secret: ${{ github.TOKEN }}
           minimum-approvals: 1
+          approvers: ivanmds
           issue-title: "Deploying to production"
       - run: echo 'deploy container to prod'
