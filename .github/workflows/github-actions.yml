@@ -50,6 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [checking_approval]
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: develop
+          
       - run: echo 'current repository ${{ github.ref }}'
       - uses: trstringer/manual-approval@v1
         with:
