@@ -52,7 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: acesso-bankly/main
+          repository: test_ci_cd_actions/main
           path: main
           
       - run: echo 'current repository ${{ github.ref }}'
