@@ -51,8 +51,9 @@ jobs:
     needs: [checking_approval]
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
       - run: ls -a
-      - run: echo 'current repository ${{ github.ref }}'
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
